@@ -551,6 +551,11 @@ getReferencedVariableCommand base@(T_SimpleCommand _ _ (T_NormalWord _ (T_Litera
                     (not $ any (`elem` flags) ["f", "F"])
             then concatMap getReference rest
             else []
+        "typeset" -> if
+                any (`elem` flags) ["x", "p"] &&
+                    (not $ any (`elem` flags) ["f", "F"])
+            then concatMap getReference rest
+            else []
         "local" -> if "x" `elem` flags
             then concatMap getReference rest
             else []
